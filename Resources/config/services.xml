@@ -8,6 +8,7 @@
         <parameter key="php_airbrake.api_key"></parameter>
         <parameter key="php_airbrake.api_endpoint"></parameter>
         <parameter key="php_airbrake.queue"></parameter>
+        <parameter key="php_airbrake.enabled"></parameter>
         <parameter key="php_airbrake.client.class">Nodrew\Bundle\PhpAirbrakeBundle\Airbrake\Client</parameter>
         <parameter key="php_airbrake.exception_listener.class">Nodrew\Bundle\PhpAirbrakeBundle\EventListener\ExceptionListener</parameter>
         <parameter key="php_airbrake.shutdown_listener.class">Nodrew\Bundle\PhpAirbrakeBundle\EventListener\ShutdownListener</parameter>
@@ -18,6 +19,7 @@
             <argument>%php_airbrake.api_key%</argument>
             <argument>%kernel.environment%</argument>
             <argument type="service" id="service_container" />
+            <argument>%php_airbrake.enabled%</argument>
             <argument>%php_airbrake.queue%</argument>
             <argument>%php_airbrake.api_endpoint%</argument>
         </service>

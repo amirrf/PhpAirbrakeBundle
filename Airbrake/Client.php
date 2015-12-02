@@ -12,10 +12,10 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * This class assists in the loading of the php-airbrake Client class.
  *
- * @package		Airbrake
- * @author		Drew Butler <hi@nodrew.com>
- * @copyright	(c) 2011 Drew Butler
- * @license		http://www.opensource.org/licenses/mit-license.php
+ * @package     Airbrake
+ * @author      Drew Butler <hi@nodrew.com>
+ * @copyright   (c) 2011 Drew Butler
+ * @license     http://www.opensource.org/licenses/mit-license.php
  */
 class Client extends AirbrakeClient
 {
@@ -23,16 +23,18 @@ class Client extends AirbrakeClient
 
     /**
      * @param string $apiKey
-     * @param Symfony\Component\DependencyInjection\ContainerInterface $container
+     * @param string $envName
+     * @param ContainerInterface $container
+     * @param bool|null $enabled
      * @param string|null $queue
      */
-    public function __construct($apiKey, $envName, ContainerInterface $container, $queue=null, $apiEndPoint=null)
+    public function __construct($apiKey, $envName, ContainerInterface $container, $enabled=true, $queue=null, $apiEndPoint=null)
     {
         if (!$apiKey) {
             return;
         }
 
-        $this->enabled = true;
+        $this->enabled = $enabled;
 
         $projectRoot    = realpath($container->getParameter('kernel.root_dir').'/..');
 
